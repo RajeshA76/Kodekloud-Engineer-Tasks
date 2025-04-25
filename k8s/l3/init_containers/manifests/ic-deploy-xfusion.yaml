@@ -1,0 +1,36 @@
+
+# Configure spec as replicas should be 1, labels app should be ic-xfusion, 
+# template's metadata lables app should be the same ic-xfusion.
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ic-deploy-xfusion
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ic-xfusion
+  template:
+    metadata:
+      labels:
+        app: ic-xfusion
+    spec:
+      initContainers:
+      - name: ic-msg-xfusion
+        image: centos:latest
+        command: ['/bin/bash','-c','echo "Init Done - Welcome to xFusionCorp Industries" > /ic/blog']
+        volumeMounts:
+        - name: ic-volume-xfusion
+          mountPath: /ic
+      containers:
+      - image: centos:latest
+        name: ic-main-xfusion
+        command : ['/bin/bash','-c','while true; do cat /ic/blog; sleep 5; done']
+        volumeMounts:
+        - name: ic-volume-xfusion
+          mountPath: /ic
+# Volume to be named as ic-volume-xfusion and it should be an emptyDir type.
+      volumes:
+      - name: ic-volume-xfusion
+        emptyDir: {}
