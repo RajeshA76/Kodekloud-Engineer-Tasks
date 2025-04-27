@@ -1,0 +1,15 @@
+    # Create a node port type service named web-xfusion using 
+    # node port 30008 to expose the web server running within the pod.
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: web-xfusion
+spec:
+  type: NodePort
+  ports:
+  - port: 80
+    targetPort: 80
+    nodePort: 30008
+  selector:
+    app: httpd

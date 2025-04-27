@@ -1,0 +1,14 @@
+#  Create a PersistentVolumeClaim named as pvc-xfusion. Configure the spec as storage class should be manual, 
+# request 1Gi of the storage, set access mode to ReadWriteOnce.
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metdata:
+  name: pvc-xfusion
+spec:
+  storageClassName: manual
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi

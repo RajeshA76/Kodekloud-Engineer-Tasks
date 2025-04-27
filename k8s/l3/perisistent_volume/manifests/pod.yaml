@@ -1,0 +1,24 @@
+
+    # Create a pod named as pod-xfusion, mount the persistent volume you created 
+    # with claim name pvc-xfusion at document root of the web server, the container 
+    # within the pod should be named as container-xfusion using 
+    # image httpd with latest tag only (remember to mention the tag i.e httpd:latest)
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-xfusion
+  labels:
+    app: httpd
+spec:
+  containers:
+  - name: container-xfusion
+    image: httpd:latest
+    volumeMounts:
+      - name: pvc-xfusion-vol
+        mountPath: /var/www/html/
+
+  volumes:
+  - name: pvc-xfusion-vol
+    persistentVolumeClaim:
+      claimName: pvc-xfusion
