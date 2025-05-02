@@ -1,0 +1,6 @@
+* persistentVolumeReclaimPolicy is a string not a list
+* apiVersion of pv and pvc is v1 not apps/v1
+* pvc.spec.resources.requests.storage is 250 MB , but in pv it was 250Mi. Both are different units.
+    modify the pvc to Mi to solve this problem.
+* Inconsitent Indentations.
+* In deployment templates it have wrong spec called containers.images but actually it was containers.image. 
