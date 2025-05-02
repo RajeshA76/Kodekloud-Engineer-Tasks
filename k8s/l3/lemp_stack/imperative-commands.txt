@@ -1,0 +1,20 @@
+
+1. Kubernetes Secrets
+
+    kubectl create secret generic mysql-root-pass --from-literal=password=R00t
+
+    kubectl create secret generic mysql-user-pass --from-literal=username=kodekloud_rin \
+    --from-literal=password=B4zNgHA7Ya
+
+    kubectl create secret generic mysql-db-url --from-literal=database=kodekloud_db3
+
+    kubectl create secret generic mysql-host --from-literal=host=mysql-service
+
+2. Kubernets configmap
+
+    kubectl create configmap php-config --from-literal=php.ini='variables_order = "EGPCS"'
+
+3. Kuberentes Copy from local host to container in a pod
+
+    k cp /tmp/index.php <pod>:/app/ -c <container>
+

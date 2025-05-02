@@ -1,0 +1,15 @@
+# 7) Create a service for mysql named mysql-service and its port must be 3306.
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: mysql-service
+spec:
+  ports:
+  - port: 3306
+    targetPort: 3306
+    protocol: TCP
+  selector:
+    matchLabels:
+      app: lemp-wp
+    
