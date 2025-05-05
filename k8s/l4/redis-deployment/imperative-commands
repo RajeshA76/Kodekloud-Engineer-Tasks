@@ -1,0 +1,3 @@
+Create a config map called my-redis-config having maxmemory 2mb in redis-config. 
+
+kubectl create configmap my-redis-config --from-literal=redis-config="maxmemory 2mb"
